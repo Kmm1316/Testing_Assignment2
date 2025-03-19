@@ -5,8 +5,7 @@ class BMI():
         self.height: float = height
         self.weight_in_kg: float = self.weight * 0.45
         self.height_in_m: float = self.height * 0.025
-        self.BMI: float
-
+        self._BMI: float
 
     def calculate_BMI(self, kg: float, m: float) -> None:
         try:
@@ -15,20 +14,26 @@ class BMI():
             elif(m) < 0:
                 return "Can't be shorter than 0 m"
             
-            self.BMI: float = kg/(m**2)
-            return round(self.BMI, 1)
+            self.__BMI: float = kg/(m**2)
+            return round(self.__BMI, 1)
         except TypeError:
             return "ERROR: Wrong data type entered!"
         except ZeroDivisionError:
             return "ERROR: Can't divide by zero!"
         
-    def categorize_BMI(self) -> None:
-        if self.BMI < 18.5:
+    def categorize_BMI(self) -> str:
+        bmi: float = self._BMI
+        if bmi < 18.5:
             print("Under Weight\n")
-        elif self.BMI >= 18.5 and self.BMI <= 24.9:
+            return "Under Weight"
+        elif bmi >= 18.5 and bmi <= 24.9:
             print("Normal Weight\n")
-        elif self.BMI >= 25 and self.BMI <= 29.9:
+            return "Normal Weight"
+        elif bmi >= 25 and bmi <= 29.9:
             print("Over Weight\n")
+            return "Over Weight"
         else:
-            print("Obese!!\n")
+            print("Obese\n")
+            return "Obese"
+        
     
