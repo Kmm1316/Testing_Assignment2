@@ -15,7 +15,7 @@ class BMI():
                 return "Can't be shorter than 0 m"
             
             self.__BMI: float = kg/(m**2)
-            return round(self.__BMI, 1)
+            return round(self._BMI, 1)
         except TypeError:
             return "ERROR: Wrong data type entered!"
         except ZeroDivisionError:
